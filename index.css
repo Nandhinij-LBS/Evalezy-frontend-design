@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --color-teal-brand: #0f5c66;
+  --color-teal-brand-dark: #0b464e;
+}
+
+/* Mobile is the default and primary target: #root simply fills the
+   viewport, no artificial constraints. */
+html,
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: white;
+}
+
+/* From tablet width upward, present the app as a centered mobile-app
+   frame instead of stretching it edge-to-edge — this is presentation
+   only, not a layout constraint that breaks anything below it. */
+@media (min-width: 640px) {
+  body {
+    background: #eef2f5;
+  }
+  #root {
+    max-width: 480px;
+    margin: 0 auto;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* Placeholder text for the contentEditable rich text editor */
+.rich-text-editable:empty:before {
+  content: attr(data-placeholder);
+  color: #9ca3af; /* text-gray-400 */
+  pointer-events: none;
+}
+
+/* Styling for rich text once it's saved and rendered read-only (Goal Detail) */
+.rich-text-content ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0.25rem 0;
+}
+.rich-text-content ol {
+  list-style: decimal;
+  padding-left: 1.25rem;
+  margin: 0.25rem 0;
+}
+.rich-text-content a {
+  color: var(--color-teal-brand);
+  text-decoration: underline;
+}
+.rich-text-content strong,
+.rich-text-content b {
+  font-weight: 600;
+}
